@@ -1,0 +1,51 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainDriventDesign.Domain", "DomainDriventDesign.Domain\DomainDriventDesign.Domain.csproj", "{451E5A55-2CBA-4E76-8FCE-D424986E1488}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainDriventDesign.ConsoleApp", "DomainDriventDesign.ConsoleApp\DomainDriventDesign.ConsoleApp.csproj", "{785CE21B-95DE-4380-8358-E83D88EBAAEA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainDriventDesign.Application", "DomainDriventDesign.Application\DomainDriventDesign.Application.csproj", "{EF752E2A-5820-4CD5-846E-8AEEA4F75E30}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MyNotes", "MyNotes", "{32B18D95-B0DA-4BA7-BA15-73DEAC95F1DE}"
+	ProjectSection(SolutionItems) = preProject
+		note.txt = note.txt
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainDriventDesign.Infrastructure", "DomainDriventDesign.Infrastructure\DomainDriventDesign.Infrastructure.csproj", "{D76DA27D-40D6-4409-9490-8BE7F7B9A055}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainDriventDesign.WebApi", "DomainDriventDesign.WebApi\DomainDriventDesign.WebApi.csproj", "{A25DE2A4-CDEC-457F-BFEF-A16C96426729}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{451E5A55-2CBA-4E76-8FCE-D424986E1488}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{451E5A55-2CBA-4E76-8FCE-D424986E1488}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{451E5A55-2CBA-4E76-8FCE-D424986E1488}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{451E5A55-2CBA-4E76-8FCE-D424986E1488}.Release|Any CPU.Build.0 = Release|Any CPU
+		{785CE21B-95DE-4380-8358-E83D88EBAAEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{785CE21B-95DE-4380-8358-E83D88EBAAEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{785CE21B-95DE-4380-8358-E83D88EBAAEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{785CE21B-95DE-4380-8358-E83D88EBAAEA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF752E2A-5820-4CD5-846E-8AEEA4F75E30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF752E2A-5820-4CD5-846E-8AEEA4F75E30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF752E2A-5820-4CD5-846E-8AEEA4F75E30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF752E2A-5820-4CD5-846E-8AEEA4F75E30}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D76DA27D-40D6-4409-9490-8BE7F7B9A055}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D76DA27D-40D6-4409-9490-8BE7F7B9A055}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D76DA27D-40D6-4409-9490-8BE7F7B9A055}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D76DA27D-40D6-4409-9490-8BE7F7B9A055}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A25DE2A4-CDEC-457F-BFEF-A16C96426729}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A25DE2A4-CDEC-457F-BFEF-A16C96426729}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A25DE2A4-CDEC-457F-BFEF-A16C96426729}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A25DE2A4-CDEC-457F-BFEF-A16C96426729}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
