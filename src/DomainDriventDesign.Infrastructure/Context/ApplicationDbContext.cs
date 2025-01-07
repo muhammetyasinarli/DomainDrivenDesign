@@ -15,9 +15,9 @@ namespace DomainDriventDesign.Infrastructure.Context
 {
     internal sealed class ApplicationDbContext : DbContext, IUnitOfWork
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) 
+            : base(options)
         {
-            optionsBuilder.UseSqlServer("Data Source=localhost;Initial Catalog=DDD2;User ID=sa;Password=Password1;Pooling=False;Encrypt=True;Trust Server Certificate=True");
         }
 
         public DbSet<Order> Orders { get; set; }

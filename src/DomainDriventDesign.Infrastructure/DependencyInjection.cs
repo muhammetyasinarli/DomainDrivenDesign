@@ -10,18 +10,23 @@ using DomainDriventDesign.Domain.Products;
 using DomainDriventDesign.Domain.Users;
 using DomainDriventDesign.Infrastructure.Context;
 using DomainDriventDesign.Infrastructure.Repositories;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DomainDriventDesign.Infrastructure
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddInfrastructure(this IServiceCollection services) 
+        public static IServiceCollection AddInfrastructure(this IServiceCollection services, string connectionString)
         {
-            services.AddScoped<ApplicationDbContext>();
+            //services.AddScoped<ApplicationDbContext>();
+
+            services.AddDbContext<ApplicationDbContext>
+                (options => options.UseSqlServer(connectionString));
+
             services.AddScoped<IUnitOfWork>(opt => opt.GetRequiredService<ApplicationDbContext>());
 
-            services.AddScoped<IUserRepository, UserRepository>(); 
+            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<IOrderRepository, OrderRepository>();
