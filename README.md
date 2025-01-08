@@ -16,7 +16,10 @@ An Example Project Developed Using Clean Architecture and Domain-Driven Design
 - CQRS; Separate commands (write operations) and queries (read operations) to handle complex business logic more effectively.
 
 ## Clean Architecture (Robert C. Martin (Uncle Bob))
-
+Clean Architecture is not about enforcing fixed layers; it’s about adhering to its core principles, such as dependency inversion, separation of concerns, and encapsulation of business logic.
+I prefer to use the Domain, Application, Infrastructure, and Web API layers from the inside out
+![Clean Architecture](https://miro.medium.com/v2/resize:fit:751/0*SNw3dawnE8WhVkJb.png)
+ 
 **Why Clean Architecture?**
 - Separation of concerns; Separate business logic from infrastructure concerns.
 - Avoid polluting the domain layer with concerns like database access, frameworks, or external integrations.
