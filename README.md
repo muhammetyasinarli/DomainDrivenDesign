@@ -13,7 +13,7 @@ An Example Project Developed Using Clean Architecture and Domain-Driven Design
 - Use Anticorruption Layer to ensure that interactions between different bounded contexts do not pollute the domain model.
 - Clean Architecture
 - Strategic Design; Combine the technical model with business strategy
-- CQRS
+- CQRS; Separate commands (write operations) and queries (read operations) to handle complex business logic more effectively.
 
 ## Clean Architecture (Robert C. Martin (Uncle Bob))
 
