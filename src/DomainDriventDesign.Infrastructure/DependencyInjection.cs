@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Ardalis.GuardClauses;
 using DomainDriventDesign.Domain.Abstractions;
 using DomainDriventDesign.Domain.Categories;
 using DomainDriventDesign.Domain.Orders;
@@ -11,27 +12,28 @@ using DomainDriventDesign.Domain.Users;
 using DomainDriventDesign.Infrastructure.Context;
 using DomainDriventDesign.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace DomainDriventDesign.Infrastructure
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddInfrastructure(this IServiceCollection services, string connectionString)
+        public static void AddInfrastructureServices(this IHostApplicationBuilder builder)
         {
-            //services.AddScoped<ApplicationDbContext>();
+            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+            Guard.Against.Null(connectionString, message: "Connection string 'DefaultConnection' not found.");
 
-            services.AddDbContext<ApplicationDbContext>
+            builder.Services.AddDbContext<ApplicationDbContext>
                 (options => options.UseSqlServer(connectionString));
 
-            services.AddScoped<IUnitOfWork>(opt => opt.GetRequiredService<ApplicationDbContext>());
+            builder.Services.AddScoped<IUnitOfWork>(opt => opt.GetRequiredService<ApplicationDbContext>());
 
-            services.AddScoped<IUserRepository, UserRepository>();
-            services.AddScoped<IProductRepository, ProductRepository>();
-            services.AddScoped<ICategoryRepository, CategoryRepository>();
-            services.AddScoped<IOrderRepository, OrderRepository>();
-
-            return services;
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<IProductRepository, ProductRepository>();
+            builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
+            builder.Services.AddScoped<IOrderRepository, OrderRepository>();
         }
     }
 }

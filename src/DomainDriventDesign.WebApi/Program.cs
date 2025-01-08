@@ -3,13 +3,12 @@ using DomainDriventDesign.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.AddApplicationServices();
+builder.AddInfrastructureServices();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-builder.Services.AddApplication();
-builder.Services.AddInfrastructure(builder.Configuration.GetConnectionString("DefaultConnection"));
 
 var app = builder.Build();
 
