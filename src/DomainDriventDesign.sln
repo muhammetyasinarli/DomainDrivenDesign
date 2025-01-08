@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainDriventDesign.Infrast
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainDriventDesign.WebApi", "DomainDriventDesign.WebApi\DomainDriventDesign.WebApi.csproj", "{A25DE2A4-CDEC-457F-BFEF-A16C96426729}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{1C1F01E2-21B0-4AB2-A707-97D08E31AA48}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{A25DE2A4-CDEC-457F-BFEF-A16C96426729}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A25DE2A4-CDEC-457F-BFEF-A16C96426729}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A25DE2A4-CDEC-457F-BFEF-A16C96426729}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1C1F01E2-21B0-4AB2-A707-97D08E31AA48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1C1F01E2-21B0-4AB2-A707-97D08E31AA48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1C1F01E2-21B0-4AB2-A707-97D08E31AA48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1C1F01E2-21B0-4AB2-A707-97D08E31AA48}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

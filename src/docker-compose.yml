@@ -1,0 +1,6 @@
+services:
+  domaindriventdesign.webapi:
+    image: ${DOCKER_REGISTRY-}domaindriventdesignwebapi
+    build:
+      context: .
+      dockerfile: DomainDriventDesign.WebApi/Dockerfile
