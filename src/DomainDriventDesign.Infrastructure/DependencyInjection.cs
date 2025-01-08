@@ -11,6 +11,7 @@ using DomainDriventDesign.Domain.Products;
 using DomainDriventDesign.Domain.Users;
 using DomainDriventDesign.Infrastructure.Context;
 using DomainDriventDesign.Infrastructure.Repositories;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -34,6 +35,13 @@ namespace DomainDriventDesign.Infrastructure
             builder.Services.AddScoped<IProductRepository, ProductRepository>();
             builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
             builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+        }
+
+        public static void InitializeDatabase(this IApplicationBuilder app)
+        {
+            using var scope = app.ApplicationServices.CreateScope();
+
+            scope.ServiceProvider.GetRequiredService<ApplicationDbContext>().Database.Migrate();
         }
     }
 }
