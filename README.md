@@ -3,15 +3,18 @@ An Example Project Developed Using Clean Architecture and Domain-Driven Design
 ## Domain Driven Design(Eric Evans)
 **Below are key principles;**
 - Focus on the Core Domain
-- Ubiquitous language; develop a shared language between developers and domain experts to minimize misunderstandings.
-- Bounded Context; Divide the domain into Bounded Contexts—logical boundaries where a specific model is valid.
+- Strategic Design; Combine the technical model with business strategy. Bounded context, subdomain, context mapping
+- Bounded Context; Divide the domain into Bounded Contexts—logical boundaries. A bounded context is a technical boundary for implementing a domain model. Each bounded context contains a consistent model and a Ubiquitous Language.
+- Ubiquitous language; develop a shared language between developers and domain experts to minimize misunderstandings. 
+- Subdomain; A subdomain is a logical partition of the business domain. Subdomains are "the problem space" (what the business does) and bounded contexts are "the solution space" (how we implement solutions).
+- Context Mappings; Context mapping defines how bounded contexts interact.
+  - ACL; context uses an adapter or translation layer to shield itself from the model of another context.
+  - Two contexts operate independently and do not share data or interact directly.
 - Collaborate with domain experts to refine the model iteratively.
 - Aggregate Design; Group related entities together into Aggregates with a clear root entity (the Aggregate Root).
 - Entity ; Objects with a unique identity and lifecycle (e.g., a Customer or Order).
 - Value Object;  Immutable objects that represent a concept and lack a unique identity (e.g., Money or Address).
 - Domain Events; Events should reflect something meaningful to the business (e.g., "OrderPlaced").
-- Use Anticorruption Layer to ensure that interactions between different bounded contexts do not pollute the domain model.
-- Strategic Design; Combine the technical model with business strategy
 - CQRS; Separate commands (write operations) and queries (read operations) to handle complex business logic more effectively.
 - Facory; It produces complicated aggregates or sometimes also entities and value objects. 
 
