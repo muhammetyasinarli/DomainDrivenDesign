@@ -20,14 +20,7 @@ namespace DomainDriventDesign.Application.Features.Users.CreateUser
 
         public async Task Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
-            var user = await _userRepository.CreateAsync(request.Name,
-                request.Email,
-                request.Password,
-                request.Country,
-                request.City,
-                request.Street,
-                request.PostalCode,
-                request.FullAddress,
+            var user = await _userRepository.CreateAsync(request.createUserDto,
                 cancellationToken);
 
             await _unitOfWork.SaveChangesAsync(cancellationToken);

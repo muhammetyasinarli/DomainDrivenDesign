@@ -17,10 +17,9 @@ namespace DomainDriventDesign.Infrastructure.Repositories
         {
             _context = context;
         }
-        public async Task<User> CreateAsync(string name, string email, string password, string country, string city, string street, string postalCode, string fullAddress, CancellationToken cancellationToken = default)
+        public async Task<User> CreateAsync(CreateUserDto createUserDto, CancellationToken cancellationToken = default)
         {
-            var user = User.CreateUser(name,
-                email, password, country, city, street, postalCode, fullAddress);
+            var user = User.CreateUser(createUserDto);
 
             await _context.Users.AddAsync(user);
 

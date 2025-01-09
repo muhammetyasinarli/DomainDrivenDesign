@@ -14,17 +14,17 @@ namespace DomainDriventDesign.Domain.Users
             Address = address;
         }
 
-        public static User CreateUser(string name, string email, string password, string country,
-        string city,
-        string street,
-        string postalCode,
-        string fullAddress)
+        public static User CreateUser(CreateUserDto createUserDto)
         {
             User user = new(id: Guid.NewGuid(),
-                name: new Name(name),
-                email: new Email(email),
-                password: new Password(password),
-                address: new(country, city, street, postalCode, fullAddress));
+                name: new Name(createUserDto.Name),
+                email: new Email(createUserDto.Email),
+                password: new Password(createUserDto.Password),
+                address: new(createUserDto.Country,
+                createUserDto.City, 
+                createUserDto.Street, 
+                createUserDto.PostalCode, 
+                createUserDto.FullAddress));
 
             return user;
         }
