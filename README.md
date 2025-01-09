@@ -3,7 +3,10 @@ An Example Project Developed Using Clean Architecture and Domain-Driven Design
 ## Domain Driven Design(Eric Evans)
 **Below are key principles;**
 - Focus on the Core Domain
-- Strategic Design; Combine the technical model with business strategy. Bounded context, subdomain, context mapping
+- Tactical design focuses on the implementation details within a specific bounded context. It provides tools and patterns to model and implement the domain logic effectively.
+  - Building Blocks; Entities, Value Objects, Aggregates, Repositories, Factories, Domain Events 
+- Strategic Design; Combine the technical model with business strategy. Strategic design focuses on the big picture of how different parts of a system interact and align with the business.
+  - Bounded Context, Context Mapping, Subdomains, Integration Patterns 
 - Bounded Context; Divide the domain into Bounded Contexts—logical boundaries. A bounded context is a technical boundary for implementing a domain model. Each bounded context contains a consistent model and a Ubiquitous Language.
 - Ubiquitous language; develop a shared language between developers and domain experts to minimize misunderstandings. 
 - Subdomain; A subdomain is a logical partition of the business domain. Subdomains are "the problem space" (what the business does) and bounded contexts are "the solution space" (how we implement solutions).
