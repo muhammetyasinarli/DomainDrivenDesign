@@ -37,3 +37,24 @@ I prefer to use the Domain, Application, Infrastructure, and Web API layers from
 - dependency inversion; the domain layer depends on abstractions rather than concrete implementations.
 
 ## Repository and Unit of Work Patterns
+Repository Pattern helps abstract data access and prevents database query operations from being performed directly. It prevents query and code duplication and provides seperation of concerns.
+It provides maintability, flexibility and testability as well.
+
+> Martin Fowler.
+> 
+> A Repository mediates between the domain and data mapping layers, acting like an in-memory domain object collection.
+
+The repository’s job is to manage the collection of domain objects, including adding, updating, and removing them from the database, abstracting the data access logic away from the business layer.
+
+**Why do we need Unit of Work Pattern?**
+Unit of Work ensures that multiple operations (such as adding or updating several entities) are handled as a single unit, meaning that all changes are committed to the database together to maintain consistency.
+The repository encapsulates the interaction with the database, its role does include adding, updating, or removing entities in the context of data persistence. The repository does not directly handle complex database transactions or coordination across multiple repositories
+
+> Martin Fowler.
+> 
+> A Unit of Work keeps track of everything you do during a business transaction that can affect the database. When you’re done, it figures out everything that needs to be done to alter the database as a result of your work.
+
+**Why didn't I use a generic repository?**
+Generic Repositories can be problematic in Domain Driven Design due to the lack of domain-specific logic, it is often better to design repositories specific to aggregates or domain entities.
+
+
