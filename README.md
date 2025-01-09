@@ -65,3 +65,15 @@ CQRS is a design pattern where commands (operations that change data) and querie
 CQRS is particularly effective for domain-driven design (DDD), especially in systems with complex business rules.
 
 The Mediator Pattern is commonly used with CQRS to streamline how commands and queries are handled. 
+
+## EF Core Best Practices
+
+To protect against race conditions in Entity Framework Core (EF Core), I prefer Row Versioning strategy. 
+`
+public byte[] RowVersion { get; set; }
+
+modelBuilder.Entity<Product>()
+    .Property(e => e.RowVersion)
+    .IsRowVersion();`
+    
+EF Core will throw a DbUpdateConcurrencyException if another operation modifies the same entity.
