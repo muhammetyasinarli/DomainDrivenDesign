@@ -57,4 +57,11 @@ The repository encapsulates the interaction with the database, its role does inc
 **Why didn't I use a generic repository?**
 Generic Repositories can be problematic in Domain Driven Design due to the lack of domain-specific logic, it is often better to design repositories specific to aggregates or domain entities.
 
+## Mediator Pattern and CQRS
+Instead of objects communicating directly with each other, they interact through a central mediator, which manages the communication. This pattern helps in reducing dependencies and improving code maintainability.
+I prefer using the MediatR library to implement the mediator pattern. It is a part of the Gang of Four (GoF) design patterns as well.
 
+CQRS is a design pattern where commands (operations that change data) and queries (operations that retrieve data) are segregated into separate models. This allows for better scalability, clear separation of concerns, and optimization of read/write operations.
+CQRS is particularly effective for domain-driven design (DDD), especially in systems with complex business rules.
+
+The Mediator Pattern is commonly used with CQRS to streamline how commands and queries are handled. 
