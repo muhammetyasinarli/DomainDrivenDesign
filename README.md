@@ -11,7 +11,6 @@ An Example Project Developed Using Clean Architecture and Domain-Driven Design
 - Value Object;  Immutable objects that represent a concept and lack a unique identity (e.g., Money or Address).
 - Domain Events; Events should reflect something meaningful to the business (e.g., "OrderPlaced").
 - Use Anticorruption Layer to ensure that interactions between different bounded contexts do not pollute the domain model.
-- Clean Architecture
 - Strategic Design; Combine the technical model with business strategy
 - CQRS; Separate commands (write operations) and queries (read operations) to handle complex business logic more effectively.
 - Facory; It produces complicated aggregates or sometimes also entities and value objects. 
