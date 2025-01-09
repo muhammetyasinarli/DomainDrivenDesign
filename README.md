@@ -14,6 +14,7 @@ An Example Project Developed Using Clean Architecture and Domain-Driven Design
 - Clean Architecture
 - Strategic Design; Combine the technical model with business strategy
 - CQRS; Separate commands (write operations) and queries (read operations) to handle complex business logic more effectively.
+- Facory; It produces complicated aggregates or sometimes also entities and value objects. 
 
 ## Clean Architecture (Robert C. Martin (Uncle Bob))
 Clean Architecture is not about enforcing fixed layers; it’s about adhering to its core principles, such as dependency inversion, separation of concerns, and encapsulation of business logic.
