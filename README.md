@@ -1,5 +1,9 @@
 An Example Project Developed Using Clean Architecture and Domain-Driven Design
 
+## How to run?
+- `cd DomainDrivenDesign\src `
+- `docker-compose up `
+
 ## Domain Driven Design(Eric Evans)
 **Below are key principles;**
 - Focus on the Core Domain
@@ -32,6 +36,4 @@ I prefer to use the Domain, Application, Infrastructure, and Web API layers from
 - Enable testability, maintainability, and flexibility.
 - dependency inversion; the domain layer depends on abstractions rather than concrete implementations.
 
-## How to run?
-- `cd DomainDrivenDesign\src `
-- `docker-compose up `
+## Repository and Unit of Work Patterns
