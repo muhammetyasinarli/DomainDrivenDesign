@@ -68,7 +68,21 @@ The Mediator Pattern is commonly used with CQRS to streamline how commands and q
 
 ## EF Core Best Practices
 
-To protect against race conditions in Entity Framework Core (EF Core), I prefer Row Versioning strategy. 
+**IsRowVersion**
+To protect against race conditions in Entity Framework Core (EF Core), I prefer Row Versioning strategy. I explicitly specified the property as a concurrency token with IsRowVersion() in the OnModelCreating method:
+`    modelBuilder.Entity<Product>().Property(p => p.RowVersion).IsRowVersion();  `
+
+It is a kind of optimistic concurrency, the RowVersion (or equivalent concurrency token) is updated by the database automatically during every update operation. When reading data, a concurrency token (e.g., RowVersion) is retrieved with the data. When saving data, the system compares the original value of the concurrency token (stored at read time) with the current value in the database. If the values match, the update proceeds. If not, a DbUpdateConcurrencyException is thrown, indicating a conflict.
+
+What is Pessimistic Concurrency?
+Pessimistic concurrency assumes conflicts are frequent and avoids them by locking the data at the database level. When a user reads or modifies a record, the system places a lock on the record, preventing others from reading or updating it until the lock is released.
+In EF Core, we can use transactions and locks to implement pessimistic concurrency.
+**For distributed systems, in-memory locks should be avoided in favor of database or distributed locking mechanisms.**
+
+I think optimistic concurrency is generally better suited for many modern applications compared to pessimistic concurrency when considering performance, scalability. However Pessimistic Concurrency is needed for critical transactions where locks guarantee safety. 
+
+**AsNoTracking**
+AsNoTracking() improves performance by skipping the change tracking process for the retrieved entities. It's ideal for read-only operations where you don't intend to update the entities later.
 
 ## Asynchronous Programming
 
