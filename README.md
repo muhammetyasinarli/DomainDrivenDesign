@@ -68,6 +68,7 @@ The Mediator Pattern is commonly used with CQRS to streamline how commands and q
 
 ## EF Core Best Practices
 
+**IsRowVersion**
 To protect against race conditions in Entity Framework Core (EF Core), I prefer Row Versioning strategy. I explicitly specified the property as a concurrency token with IsRowVersion() in the OnModelCreating method:
 `    modelBuilder.Entity<Product>().Property(p => p.RowVersion).IsRowVersion();  `
 
@@ -79,6 +80,9 @@ In EF Core, we can use transactions and locks to implement pessimistic concurren
 **For distributed systems, in-memory locks should be avoided in favor of database or distributed locking mechanisms.**
 
 I think optimistic concurrency is generally better suited for many modern applications compared to pessimistic concurrency when considering performance, scalability. However Pessimistic Concurrency is needed for critical transactions where locks guarantee safety. 
+
+**AsNoTracking**
+AsNoTracking() improves performance by skipping the change tracking process for the retrieved entities. It's ideal for read-only operations where you don't intend to update the entities later.
 
 ## Asynchronous Programming
 
