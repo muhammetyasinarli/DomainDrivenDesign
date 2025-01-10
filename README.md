@@ -84,5 +84,13 @@ I think optimistic concurrency is generally better suited for many modern applic
 **AsNoTracking**
 AsNoTracking() improves performance by skipping the change tracking process for the retrieved entities. It's ideal for read-only operations where you don't intend to update the entities later.
 
-## Asynchronous Programming
+**Load data in EF Core**
+3 ways to load data in EF Core ; Select Loading> Eager Loading> Lazy Loading
+Select Loading is the most efficient method when you need to load only specific fields or data from a related entity, avoiding the overhead of loading unnecessary related data.
+Eager Loading allows you to load related entities along with the primary entity in a single query using Include(). With eager loading, you use Include() to load related data in the same query, which results in one query with a JOIN operation.
+Lazy Loading is a technique where related data is automatically loaded when it is accessed, typically by accessing a navigation property on the entity
+Slowest compared to the other two methods because it can result in N+1 query problem, where a new query is executed for each related entity.
+
+**Async Calls**
+it’s important to always use asynchronous APIs rather than synchronous ones. Synchronous APIs block the thread for the duration of database I/O, increasing the need for threads.
 
