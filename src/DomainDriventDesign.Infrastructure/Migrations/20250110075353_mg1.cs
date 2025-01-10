@@ -65,7 +65,8 @@ namespace DomainDriventDesign.Infrastructure.Migrations
                     Quantity = table.Column<int>(type: "int", nullable: false),
                     Price_Amount = table.Column<decimal>(type: "money", nullable: false),
                     Price_Currency = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    CategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    CategoryId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    RowVersion = table.Column<byte[]>(type: "rowversion", rowVersion: true, nullable: false)
                 },
                 constraints: table =>
                 {

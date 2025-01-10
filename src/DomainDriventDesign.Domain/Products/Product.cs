@@ -21,6 +21,7 @@ namespace DomainDriventDesign.Domain.Products
         public Money Price { get; private set; }
         public Guid CategoryId { get; private set; }
         public Category Category { get; private set; }
+        public byte[] RowVersion { get; set; }
 
         public void Update(string name, decimal amount, int quantity, string currency, Guid categoryId)
         {
@@ -28,6 +29,14 @@ namespace DomainDriventDesign.Domain.Products
             Quantity = quantity;
             CategoryId = categoryId;
             Price = new(amount,Currency.FromCode(currency));
+        }
+
+        public void UpdateQuantity(int quantity)
+        {
+            if (quantity < 0)
+                throw new ArgumentException("Quantity cannot be negative.");
+
+            Quantity = quantity;
         }
     }
 }

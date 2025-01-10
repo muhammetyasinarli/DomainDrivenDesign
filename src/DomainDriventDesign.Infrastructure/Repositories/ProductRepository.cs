@@ -33,5 +33,14 @@ namespace DomainDriventDesign.Infrastructure.Repositories
         {
             return await _context.Products.ToListAsync(cancellationToken);
         }
+
+        public async Task UpdateQuantityAsync(Guid id, int quantity, CancellationToken cancellationToken = default)
+        {
+            var product = await _context.Products.FirstOrDefaultAsync(r => r.Id == id, cancellationToken);
+
+            if (product == null) { return; }
+
+            product.UpdateQuantity(product.Quantity-quantity);
+        }
     }
 }

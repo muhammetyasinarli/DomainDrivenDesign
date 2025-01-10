@@ -15,7 +15,7 @@ namespace DomainDriventDesign.Infrastructure.Context
 {
     internal sealed class ApplicationDbContext : DbContext, IUnitOfWork
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) 
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
         }
@@ -60,17 +60,19 @@ namespace DomainDriventDesign.Infrastructure.Context
                     priceBuilder.Property(p => p.Amount)
                     .HasColumnType("money");
                 });
-
+            modelBuilder.Entity<Product>()
+        .Property(p => p.RowVersion)
+        .IsRowVersion();
             modelBuilder.Entity<OrderLine>()
-    .OwnsOne(p => p.Price, priceBuilder =>
-    {
-        priceBuilder
-        .Property(p => p.Currency)
-        .HasConversion(currency => currency.Code, code => Currency.FromCode(code));
+            .OwnsOne(p => p.Price, priceBuilder =>
+            {
+                priceBuilder
+                .Property(p => p.Currency)
+                .HasConversion(currency => currency.Code, code => Currency.FromCode(code));
 
-        priceBuilder.Property(p => p.Amount)
-        .HasColumnType("money");
-    });
+                priceBuilder.Property(p => p.Amount)
+                .HasColumnType("money");
+            });
 
         }
     }
