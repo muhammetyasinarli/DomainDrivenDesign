@@ -26,7 +26,7 @@ namespace DomainDriventDesign.Infrastructure.Repositories
 
         public async Task<List<Category>> GetAllAsync(CancellationToken cancellationToken = default)
         {
-            return await _context.Categories.ToListAsync(cancellationToken);
+            return await _context.Categories.AsNoTracking().ToListAsync(cancellationToken);
         }
     }
 }

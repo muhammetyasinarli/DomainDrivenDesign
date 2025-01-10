@@ -31,7 +31,7 @@ namespace DomainDriventDesign.Infrastructure.Repositories
 
         public async Task<List<Product>> GetAllAsync(CancellationToken cancellationToken = default)
         {
-            return await _context.Products.ToListAsync(cancellationToken);
+            return await _context.Products.AsNoTracking().ToListAsync(cancellationToken);
         }
 
         public async Task UpdateQuantityAsync(Guid id, int quantity, CancellationToken cancellationToken = default)
