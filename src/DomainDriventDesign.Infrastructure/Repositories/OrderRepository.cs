@@ -24,14 +24,14 @@ namespace DomainDriventDesign.Infrastructure.Repositories
 
             order.CreateOrder(createOrderDtos);
 
-            await _context.Orders.AddAsync(order);
+            await _context.Orders.AddAsync(order, cancellationToken);
 
             return order;
         }
 
         public async Task<List<Order>> GetAllAsync(CancellationToken cancellationToken = default)
         {
-            return await _context.Orders.Include(p=>p.OrderLines).ThenInclude(p=>p.Product).ToListAsync();
+            return await _context.Orders.Include(p=>p.OrderLines).ThenInclude(p=>p.Product).ToListAsync(cancellationToken);
         }
     }
 }

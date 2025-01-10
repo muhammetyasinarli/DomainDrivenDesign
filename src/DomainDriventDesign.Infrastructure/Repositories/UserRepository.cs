@@ -21,7 +21,7 @@ namespace DomainDriventDesign.Infrastructure.Repositories
         {
             var user = User.CreateUser(createUserDto);
 
-            await _context.Users.AddAsync(user);
+            await _context.Users.AddAsync(user, cancellationToken);
 
             return user;
         }

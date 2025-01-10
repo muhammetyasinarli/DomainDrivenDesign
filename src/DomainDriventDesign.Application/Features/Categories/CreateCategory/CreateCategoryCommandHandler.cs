@@ -19,7 +19,7 @@ namespace DomainDriventDesign.Application.Features.Categories.CreateCategory
         {
             await _categoryRepository.CreateAsync(request.Name, cancellationToken);
 
-            await _unitOfWork.SaveChangesAsync();
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
 }

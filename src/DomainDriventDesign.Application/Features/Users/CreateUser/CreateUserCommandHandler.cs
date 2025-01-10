@@ -25,7 +25,7 @@ namespace DomainDriventDesign.Application.Features.Users.CreateUser
 
             await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-            await _mediator.Publish(new UserCreatedEvent(user));
+            await _mediator.Publish(new UserCreatedEvent(user), cancellationToken);
         }
     }
 }

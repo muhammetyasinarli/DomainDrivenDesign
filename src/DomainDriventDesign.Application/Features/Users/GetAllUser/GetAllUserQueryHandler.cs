@@ -14,7 +14,7 @@ namespace DomainDriventDesign.Application.Features.Users.GetAllUser
 
         public async Task<List<User>> Handle(GetAllUserQuery request, CancellationToken cancellationToken)
         {
-            return await _userRepository.GetAllAsync();
+            return await _userRepository.GetAllAsync(cancellationToken);
         }
     }
 }

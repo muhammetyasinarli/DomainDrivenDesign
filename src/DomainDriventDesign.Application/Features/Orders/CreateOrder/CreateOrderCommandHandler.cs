@@ -21,9 +21,9 @@ namespace DomainDriventDesign.Application.Features.Orders.CreateOrder
         {
             var order = await _orderRepository.CreateAsync(request.CreateOrderDtos, cancellationToken);
 
-            await _unitOfWork.SaveChangesAsync();
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-            await _mediator.Publish(new OrderCreatedEvent(order));
+            await _mediator.Publish(new OrderCreatedEvent(order), cancellationToken);
         }
     }
 }

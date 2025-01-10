@@ -21,10 +21,11 @@ namespace DomainDriventDesign.Application.Features.Products.CreateProduct
                 request.Quantity,
                 request.Amount,
                 request.Currency,
-                request.CategoryId
+                request.CategoryId,
+                cancellationToken
                 );
 
-            await _unitOfWork.SaveChangesAsync();
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
         }
     }
 }

@@ -21,7 +21,7 @@ namespace DomainDriventDesign.Infrastructure.Repositories
         {
             var category = new Category(Guid.NewGuid(), new (name));
 
-            await _context.Categories.AddAsync(category);
+            await _context.Categories.AddAsync(category, cancellationToken);
         }
 
         public async Task<List<Category>> GetAllAsync(CancellationToken cancellationToken = default)
