@@ -7,11 +7,11 @@ using MediatR;
 
 namespace DomainDriventDesign.Domain.Users.Events
 {
-    public sealed class UserDomainEvent:INotification
+    public sealed class UserCreatedEvent:INotification
     {
         public User User { get; }
 
-        public UserDomainEvent(User user)
+        public UserCreatedEvent(User user)
         {
             User = user;
         }

@@ -23,7 +23,7 @@ namespace DomainDriventDesign.Application.Features.Orders.CreateOrder
 
             await _unitOfWork.SaveChangesAsync();
 
-            await _mediator.Publish(new OrderDomainEvent(order));
+            await _mediator.Publish(new OrderCreatedEvent(order));
         }
     }
 }

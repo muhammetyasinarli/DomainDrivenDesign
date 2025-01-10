@@ -7,11 +7,11 @@ using MediatR;
 
 namespace DomainDriventDesign.Domain.Orders.Events
 {
-    public sealed class OrderDomainEvent : INotification
+    public sealed class OrderCreatedEvent : INotification
     {
         public Order Order { get; set; }
 
-        public OrderDomainEvent(Order order)
+        public OrderCreatedEvent(Order order)
         {
             Order = order;
         }
