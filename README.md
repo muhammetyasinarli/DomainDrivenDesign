@@ -70,3 +70,5 @@ The Mediator Pattern is commonly used with CQRS to streamline how commands and q
 
 To protect against race conditions in Entity Framework Core (EF Core), I prefer Row Versioning strategy. 
 
+## Asynchronous Programming
+
