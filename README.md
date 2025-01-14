@@ -115,3 +115,14 @@ it’s important to always use asynchronous APIs rather than synchronous ones. S
 **Dependency Injection Problems**
 - Circular References;  When two or more services depend on each other directly or indirectly, creating a cycle that the DI container cannot resolve. For the solution, refactor the design to break the circular dependencies.
 - Scope Issues; Improper handling of service lifetimes (e.g., mistakenly using Singleton for services that should be scoped or transient) can cause memory leaks or excessive memory usage. Singleton services are not disposed of until the application ends (or the host is disposed), which means that the Transient service reference held by the Singleton will also never be disposed of as long as the Singleton is alive. This can lead to a memory leaks.
+
+## Test Techniques
+- Unit Testing; Unit testing is a software testing technique where individual units or components of a program are tested in isolation to ensure they function as expected. Each "unit" (e.g., a function, method, or class) is tested independently of other components. Dependencies are often mocked or stubbed to isolate the unit being tested.
+- Functional Testing; It tests the application’s end-to-end functionality to ensure it meets the needs of the end user.Tests the complete functionality of a system, not individual components. Tests real-world user actions, like logging in, creating an order, or submitting a form. Tests with real or integrated components not mocks.
+- Integration Testing; Integration testing is a type of software testing where individual units or components are combined and tested as a group to verify how they work together. It ensures that interactions between different modules, services, or systems function as expected.
+
+**Ex**
+You are testing the "Add to Cart" feature in an e-commerce website.
+Test individual functions or methods in isolation. Use mocks for dependencies. Test addItemToCart() to ensure it handles valid and invalid inputs correctly. => Unit Testing
+Test how components work together (e.g., services, APIs, and databases). Verify Cart Service interacts correctly with Inventory Service and the Database. => Integration testing
+Test end-to-end user functionality. Test the full "Add to Cart" workflow, including UI, APIs, and backend interactions. Don't use mocks. => Functional Testing
