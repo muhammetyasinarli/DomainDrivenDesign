@@ -84,5 +84,45 @@ I think optimistic concurrency is generally better suited for many modern applic
 **AsNoTracking**
 AsNoTracking() improves performance by skipping the change tracking process for the retrieved entities. It's ideal for read-only operations where you don't intend to update the entities later.
 
-## Asynchronous Programming
+**Load data in EF Core**
+3 ways to load data in EF Core ; Select Loading> Eager Loading> Lazy Loading
+Select Loading is the most efficient method when you need to load only specific fields or data from a related entity, avoiding the overhead of loading unnecessary related data.
+Eager Loading allows you to load related entities along with the primary entity in a single query using Include(). With eager loading, you use Include() to load related data in the same query, which results in one query with a JOIN operation.
+Lazy Loading is a technique where related data is automatically loaded when it is accessed, typically by accessing a navigation property on the entity
+Slowest compared to the other two methods because it can result in N+1 query problem, where a new query is executed for each related entity.
 
+**Async Calls**
+it’s important to always use asynchronous APIs rather than synchronous ones. Synchronous APIs block the thread for the duration of database I/O, increasing the need for threads. Using synchronous code in certain situations can lead to thread starvation problems, particularly in environments with a limited thread pool, such as web servers or applications using a thread pool-based architecture (e.g., ASP.NET).
+
+##  DI Lifetimes ##
+
+- Singelton
+  - Settings (such as configuration values loaded from appsettings.json or other sources) are typically registered with a singleton lifetime. This is because settings are generally immutable, shared across the entire application, and do not need to be reloaded for each request.
+  - The lifetime of the IMapper registered by builder.Services.AddAutoMapper() is singleton by default.
+  - The MongoClient class is designed to be thread-safe and reusable across the entire application.
+  - Redis client libraries (e.g., StackExchange.Redis) are thread-safe and maintain an internal connection pool.
+  - The CosmosClient from the Azure Cosmos DB SDK is thread-safe and manages its own connection pool.
+- Scoped
+  - DbContext is not thread-safe and should be created per request or per operation. (AddDbContext, AddNpgsqlDbContext ,AddSqlServerDbContext, etc.)  DbContext in Entity Framework Core follows the Unit of Work pattern. Scoped lifetime ensures proper management of entity state, transactions, and database connections within the lifecycle of a unit of work (e.g., HTTP request).
+  - Repository, I prefer to use scoped repository classes with EF Core.
+  - AddMediatR,  scope is the recommended and default lifetime of MediatR. In a typical web application, this ensures that all dependencies required by MediatR handlers (e.g., database contexts or services) also respect the scope of the request and are disposed of after the request is completed.
+
+- Transient
+  - Dapper, Since Dapper does not track entities or manage complex transactions (like EF Core), there’s no need to maintain the connection for the entire request scope as you would with DbContext.
+  - Repository, I prefer to use transient repository classes with Dapper
+  - In .NET Core, the lifetime of AddHttpClient is Transient by default. However, it is typically used in conjunction with IHttpClientFactory, which manages the lifecycle of HttpClient.
+
+**Dependency Injection Problems**
+- Circular References;  When two or more services depend on each other directly or indirectly, creating a cycle that the DI container cannot resolve. For the solution, refactor the design to break the circular dependencies.
+- Scope Issues; Improper handling of service lifetimes (e.g., mistakenly using Singleton for services that should be scoped or transient) can cause memory leaks or excessive memory usage. Singleton services are not disposed of until the application ends (or the host is disposed), which means that the Transient service reference held by the Singleton will also never be disposed of as long as the Singleton is alive. This can lead to a memory leaks.
+
+## Test Techniques
+- Unit Testing; Unit testing is a software testing technique where individual units or components of a program are tested in isolation to ensure they function as expected. Each "unit" (e.g., a function, method, or class) is tested independently of other components. Dependencies are often mocked or stubbed to isolate the unit being tested.
+- Functional Testing; It tests the application’s end-to-end functionality to ensure it meets the needs of the end user.Tests the complete functionality of a system, not individual components. Tests real-world user actions, like logging in, creating an order, or submitting a form. Tests with real or integrated components not mocks.
+- Integration Testing; Integration testing is a type of software testing where individual units or components are combined and tested as a group to verify how they work together. It ensures that interactions between different modules, services, or systems function as expected.
+
+**Ex**
+You are testing the "Add to Cart" feature in an e-commerce website.
+Test individual functions or methods in isolation. Use mocks for dependencies. Test addItemToCart() to ensure it handles valid and invalid inputs correctly. => Unit Testing
+Test how components work together (e.g., services, APIs, and databases). Verify Cart Service interacts correctly with Inventory Service and the Database. => Integration testing
+Test end-to-end user functionality. Test the full "Add to Cart" workflow, including UI, APIs, and backend interactions. Don't use mocks. => Functional Testing
